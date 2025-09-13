@@ -80,14 +80,19 @@ body {
     align-items: center;
 }
 
-.logo-img {
-    height: 24px;
-    width: auto;
-    transition: transform 0.2s ease;
+.logo-text {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--netflix-red);
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, color 0.3s ease;
+    text-decoration: none;
 }
 
-.logo-img:hover {
+.logo-text:hover {
     transform: scale(1.05);
+    color: #ff0000;
 }
 
 /* 메뉴 스타일 */
@@ -183,12 +188,13 @@ body {
 .profile-img {
     width: 32px;
     height: 32px;
-    border-radius: 4px;
-    transition: box-shadow 0.2s ease;
+    color: var(--netflix-white);
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .profile-container:hover .profile-img {
-    box-shadow: 0 0 0 2px var(--netflix-white);
+    color: var(--netflix-text-secondary);
+    transform: scale(1.05);
 }
 
 .profile-arrow {
@@ -252,8 +258,13 @@ body {
         --header-height: 56px;
     }
     
-    .logo-img {
-        height: 20px;
+    .logo-text {
+        font-size: 24px;
+    }
+    
+    .profile-img {
+        width: 24px;
+        height: 24px;
     }
     
     .notification-btn {
