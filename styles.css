@@ -307,6 +307,15 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
     transform: scale(1.05);
 }
 
+/* Top 10 섹션 */
+.top10-section { padding: var(--spacing-xl) 0; background-color: var(--netflix-black); }
+.top10-title { color: var(--netflix-white); font-size: 2rem; font-weight: 700; margin-bottom: var(--spacing-xl); }
+.top10-list { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--spacing-md); }
+.top10-item { position: relative; cursor: pointer; transition: transform 0.3s ease; }
+.top10-item:hover { transform: scale(1.05); }
+.top10-rank { position: absolute; top: 10px; left: 10px; background-color: var(--netflix-red); color: var(--netflix-white); width: 30px; height: auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--font-size-sm); z-index: 2; }
+.top10-image { width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
+
 /* 푸터 스타일 */
 .footer {
     background-color: var(--netflix-black);
