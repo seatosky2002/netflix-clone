@@ -1,0 +1,268 @@
+/* CSS 변수 정의 (디자인 토큰) */
+:root {
+    /* 색상 */
+    --netflix-red: #e50914;
+    --netflix-black: #141414;
+    --netflix-dark-gray: #181818;
+    --netflix-gray: #333333;
+    --netflix-light-gray: #666666;
+    --netflix-white: #ffffff;
+    --netflix-text-secondary: #b3b3b3;
+    
+    /* 간격 */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    
+    /* 폰트 크기 */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    
+    /* 헤더 높이 */
+    --header-height: 68px;
+    
+    /* Z-index */
+    --z-header: 1000;
+}
+
+/* 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--netflix-black);
+    color: var(--netflix-white);
+    line-height: 1.6;
+}
+
+/* 헤더 스타일 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background-color: rgba(20, 20, 20, 0.8); /* 반투명 배경 */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: var(--z-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-lg);
+    transition: background-color 0.3s ease;
+}
+
+/* 헤더 스크롤 시 배경 진하게 */
+.header.scrolled {
+    background-color: rgba(20, 20, 20, 0.95);
+}
+
+/* 네비게이션 영역 */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+/* 로고 스타일 */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 24px;
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* 메뉴 스타일 */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--netflix-white);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    position: relative;
+}
+
+/* 호버 효과 */
+.nav-link:hover {
+    color: var(--netflix-text-secondary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 오른쪽 메뉴 영역 */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* 버튼 공통 스타일 */
+.search-btn,
+.notification-btn {
+    background: none;
+    border: none;
+    color: var(--netflix-white);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn:hover,
+.notification-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Font Awesome 아이콘 스타일 */
+.search-btn i,
+.notification-btn i {
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+/* 키즈 텍스트 스타일 */
+.kids-text {
+    color: var(--netflix-white);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.kids-text:hover {
+    color: var(--netflix-text-secondary);
+}
+
+/* 프로필 컨테이너 스타일 */
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.profile-container:hover {
+    transform: scale(1.05);
+}
+
+.profile-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    transition: box-shadow 0.2s ease;
+}
+
+.profile-container:hover .profile-img {
+    box-shadow: 0 0 0 2px var(--netflix-white);
+}
+
+.profile-arrow {
+    color: var(--netflix-white);
+    font-size: 12px;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.profile-container:hover .profile-arrow {
+    transform: rotate(180deg);
+    color: var(--netflix-text-secondary);
+}
+
+/* 메인 콘텐츠 영역 */
+.main-content {
+    margin-top: var(--header-height);
+    padding: var(--spacing-xl);
+    min-height: 100vh;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* 모바일에서는 메뉴 숨김 */
+    }
+    
+    .nav {
+        gap: var(--spacing-md);
+    }
+    
+    .header {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .search-btn,
+    .notification-btn {
+        padding: var(--spacing-xs);
+    }
+    
+    .search-btn i,
+    .notification-btn i {
+        font-size: 16px;
+    }
+    
+    .profile-img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .kids-text {
+        font-size: var(--font-size-xs);
+    }
+    
+    .profile-arrow {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --header-height: 56px;
+    }
+    
+    .logo-img {
+        height: 20px;
+    }
+    
+    .notification-btn {
+        display: none; /* 매우 작은 화면에서는 알림 버튼 숨김 */
+    }
+}
+
+/* 스크롤 시 헤더 스타일 변경을 위한 JavaScript 연동 */
+.header.scrolled {
+    background-color: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(15px);
+}
