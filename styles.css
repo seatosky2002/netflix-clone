@@ -1,55 +1,26 @@
-/* CSS 변수 정의 (디자인 토큰) */
+/* CSS 변수 */
 :root {
-    /* 색상 */
     --netflix-red: #e50914;
     --netflix-black: #141414;
-    --netflix-dark-gray: #181818;
-    --netflix-gray: #333333;
-    --netflix-light-gray: #666666;
     --netflix-white: #ffffff;
     --netflix-text-secondary: #b3b3b3;
-    
-    /* 간격 */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
-    
-    /* 폰트 크기 */
-    --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    
-    /* 헤더 높이 */
     --header-height: 68px;
-    
-    /* 페이지 너비 */
     --page-width: 1440px;
-    
-    /* 히어로 섹션 */
     --hero-height: 600px;
-    
-    /* Z-index */
     --z-header: 1000;
     --z-hero-content: 10;
 }
 
-/* 기본 스타일 리셋 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: var(--netflix-black);
-    color: var(--netflix-white);
-    line-height: 1.6;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(--netflix-black); color: var(--netflix-white); line-height: 1.6; }
 
 /* 헤더 스타일 */
 .header {
@@ -274,6 +245,13 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
+.hero-title-image {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: var(--spacing-md);
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+}
+
 .hero-description {
     font-size: var(--font-size-lg);
     color: var(--netflix-white);
@@ -283,59 +261,110 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none; /* 모바일에서는 메뉴 숨김 */
-    }
-    
-    .nav {
-        gap: var(--spacing-md);
-    }
-    
-    .header {
-        padding: 0 var(--spacing-md);
-    }
-    
-    .search-btn,
-    .notification-btn {
-        padding: var(--spacing-xs);
-    }
-    
-    .search-btn i,
-    .notification-btn i {
-        font-size: 16px;
-    }
-    
-    .profile-img {
-        width: 28px;
-        height: 28px;
-    }
-    
-    .kids-text {
-        font-size: var(--font-size-xs);
-    }
-    
-    .profile-arrow {
-        font-size: 10px;
-    }
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
 }
 
-@media (max-width: 480px) {
-    :root {
-        --header-height: 56px;
-    }
-    
-    .logo-text {
-        font-size: 24px;
-    }
-    
-    .profile-img {
-        width: 24px;
-        height: 24px;
-    }
-    
-    .notification-btn {
-        display: none; /* 매우 작은 화면에서는 알림 버튼 숨김 */
-    }
+/* 버튼 스타일 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
+
+.btn:focus {
+    outline: 2px solid var(--netflix-white);
+    outline-offset: 2px;
+}
+
+.btn-primary {
+    background-color: var(--netflix-white);
+    color: var(--netflix-black);
+}
+
+.btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: rgba(109, 109, 110, 0.7);
+    color: var(--netflix-white);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(109, 109, 110, 0.9);
+    transform: scale(1.05);
+}
+
+/* 푸터 스타일 */
+.footer {
+    background-color: var(--netflix-black);
+    color: var(--netflix-text-secondary);
+    padding: var(--spacing-xl) 0;
+    margin-top: var(--spacing-xl);
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-social a {
+    color: var(--netflix-text-secondary);
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--netflix-white);
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.footer-column a {
+    color: var(--netflix-text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--netflix-white);
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.footer-info p {
+    color: var(--netflix-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+    margin: 0;
+}
+
