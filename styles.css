@@ -26,8 +26,15 @@
     /* 헤더 높이 */
     --header-height: 68px;
     
+    /* 페이지 너비 */
+    --page-width: 1440px;
+    
+    /* 히어로 섹션 */
+    --hero-height: 600px;
+    
     /* Z-index */
     --z-header: 1000;
+    --z-hero-content: 10;
 }
 
 /* 기본 스타일 리셋 */
@@ -60,11 +67,6 @@ body {
     justify-content: space-between;
     padding: 0 var(--spacing-lg);
     transition: background-color 0.3s ease;
-}
-
-/* 헤더 스크롤 시 배경 진하게 */
-.header.scrolled {
-    background-color: rgba(20, 20, 20, 0.95);
 }
 
 /* 네비게이션 영역 */
@@ -211,8 +213,46 @@ body {
 /* 메인 콘텐츠 영역 */
 .main-content {
     margin-top: var(--header-height);
-    padding: var(--spacing-xl);
     min-height: 100vh;
+}
+
+/* 컨테이너 */
+.container {
+    width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* 히어로 섹션 */
+.hero {
+    position: relative;
+    height: var(--hero-height);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: var(--z-hero-content);
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--netflix-white);
+    margin-bottom: var(--spacing-md);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-description {
+    font-size: var(--font-size-lg);
+    color: var(--netflix-white);
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-xl);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 /* 반응형 디자인 */
@@ -270,10 +310,4 @@ body {
     .notification-btn {
         display: none; /* 매우 작은 화면에서는 알림 버튼 숨김 */
     }
-}
-
-/* 스크롤 시 헤더 스타일 변경을 위한 JavaScript 연동 */
-.header.scrolled {
-    background-color: rgba(20, 20, 20, 0.95);
-    backdrop-filter: blur(15px);
 }
