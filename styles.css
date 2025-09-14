@@ -4,11 +4,15 @@
     --netflix-black: #141414;
     --netflix-white: #ffffff;
     --netflix-text-secondary: #b3b3b3;
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
+    --spacing-xs: 8px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --button-padding: 12px 24px;
+    --slider-btn-width: 40px;
+    --slider-btn-height: 60px;
+    --profile-size: 32px;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
@@ -150,8 +154,8 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
 }
 
 .profile-img {
-    width: 32px;
-    height: 32px;
+    width: var(--profile-size);
+    height: var(--profile-size);
     color: var(--netflix-white);
     transition: color 0.2s ease, transform 0.2s ease;
 }
@@ -262,7 +266,7 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-sm);
-    padding: 12px 24px;
+    padding: var(--button-padding);
     border: none;
     border-radius: 4px;
     font-size: var(--font-size-base);
@@ -304,12 +308,12 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
 .content-wrapper { position: relative; }
 .content-list { display: flex; gap: var(--spacing-md); overflow-x: auto; scroll-behavior: smooth; padding: var(--spacing-sm) 0; }
 .content-list::-webkit-scrollbar { display: none; } /* 스크롤바 숨기기 */
-.content-item { flex: 0 0 280px; cursor: pointer; transition: transform 0.3s ease; }
+.content-item { flex: 0 0 280px; cursor: pointer; transition: transform 0.3s ease; aspect-ratio: 16/9; }
 .content-item:hover { transform: scale(1.05); }
 .content-image { width: 100%; height: auto; object-fit: contain; border-radius: 4px; }
 
 /* 슬라이더 네비게이션 버튼 */
-.slider-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.7); color: var(--netflix-white); border: none; width: 40px; height: 60px; cursor: pointer; font-size: 1.5rem; border-radius: 4px; z-index: 10; }
+.slider-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.7); color: var(--netflix-white); border: none; width: var(--slider-btn-width); height: var(--slider-btn-height); cursor: pointer; font-size: 1.5rem; border-radius: 4px; z-index: 10; }
 .slider-nav:hover { background: rgba(0, 0, 0, 0.9); }
 .slider-prev { left: -50px; }
 .slider-next { right: -50px; }
