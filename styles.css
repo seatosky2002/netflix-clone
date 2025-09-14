@@ -1,0 +1,391 @@
+/* CSS 변수 */
+:root {
+    --netflix-red: #e50914;
+    --netflix-black: #141414;
+    --netflix-white: #ffffff;
+    --netflix-text-secondary: #b3b3b3;
+    --spacing-xs: 8px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --button-padding: 12px 24px;
+    --slider-btn-width: 40px;
+    --slider-btn-height: 60px;
+    --profile-size: 32px;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --header-height: 68px;
+    --page-width: 1440px;
+    --hero-height: 600px;
+    --z-header: 1000;
+    --z-hero-content: 10;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(--netflix-black); color: var(--netflix-white); line-height: 1.6; }
+
+/* 헤더 스타일 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background-color: rgba(20, 20, 20, 0.8); /* 반투명 배경 */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: var(--z-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-lg);
+    transition: background-color 0.3s ease;
+}
+
+/* 네비게이션 영역 */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+/* 로고 스타일 */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--netflix-red);
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.logo-text:hover {
+    transform: scale(1.05);
+    color: #ff0000;
+}
+
+/* 메뉴 스타일 */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--netflix-white);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    position: relative;
+}
+
+/* 호버 효과 */
+.nav-link:hover {
+    color: var(--netflix-text-secondary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 오른쪽 메뉴 영역 */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* 아이콘 버튼 공통 스타일 */
+.icon-btn {
+    background: none;
+    border: none;
+    color: var(--netflix-white);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn i {
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+/* 키즈 텍스트 스타일 */
+.kids-text {
+    color: var(--netflix-white);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.kids-text:hover {
+    color: var(--netflix-text-secondary);
+}
+
+/* 프로필 컨테이너 스타일 */
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.profile-container:hover {
+    transform: scale(1.05);
+}
+
+.profile-img {
+    width: var(--profile-size);
+    height: var(--profile-size);
+    color: var(--netflix-white);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.profile-container:hover .profile-img {
+    color: var(--netflix-text-secondary);
+    transform: scale(1.05);
+}
+
+.profile-arrow {
+    color: var(--netflix-white);
+    font-size: 12px;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.profile-container:hover .profile-arrow {
+    transform: rotate(180deg);
+    color: var(--netflix-text-secondary);
+}
+
+/* 메인 콘텐츠 영역 */
+.main-content {
+    margin-top: var(--header-height);
+    min-height: 100vh;
+}
+
+/* 컨테이너 */
+.container {
+    width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* 히어로 섹션 */
+.hero {
+    position: relative;
+    height: var(--hero-height);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: var(--z-hero-content);
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--netflix-white);
+    margin-bottom: var(--spacing-md);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-title-image {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: var(--spacing-md);
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.hero-description {
+    font-size: var(--font-size-lg);
+    color: var(--netflix-white);
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-xl);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--button-padding);
+    border: none;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:focus {
+    outline: 2px solid var(--netflix-white);
+    outline-offset: 2px;
+}
+
+.btn-primary {
+    background-color: var(--netflix-white);
+    color: var(--netflix-black);
+}
+
+.btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: rgba(109, 109, 110, 0.7);
+    color: var(--netflix-white);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(109, 109, 110, 0.9);
+    transform: scale(1.05);
+}
+
+/* 콘텐츠 섹션 공통 스타일 */
+.content-section { padding: var(--spacing-lg) 0; background-color: var(--netflix-black); position: relative; }
+.section-title { color: var(--netflix-white); font-size: 2rem; font-weight: 700; margin-bottom: var(--spacing-xl); }
+.content-wrapper { position: relative; }
+.content-list { display: flex; gap: var(--spacing-md); overflow-x: auto; scroll-behavior: smooth; padding: var(--spacing-sm) 0; }
+.content-list::-webkit-scrollbar { display: none; } /* 스크롤바 숨기기 */
+.content-item { flex: 0 0 280px; cursor: pointer; transition: transform 0.3s ease; aspect-ratio: 16/9; }
+.content-item:hover { transform: scale(1.05); }
+.content-image { width: 100%; height: auto; object-fit: contain; border-radius: 4px; }
+
+/* 슬라이더 네비게이션 버튼 */
+.slider-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.7); color: var(--netflix-white); border: none; width: var(--slider-btn-width); height: var(--slider-btn-height); cursor: pointer; font-size: 1.5rem; border-radius: 4px; z-index: 10; }
+.slider-nav:hover { background: rgba(0, 0, 0, 0.9); }
+.slider-prev { left: -50px; }
+.slider-next { right: -50px; }
+
+/* Top 10 전용 스타일 */
+.top10-item { position: relative; }
+.top10-rank { position: absolute; top: 10px; left: 10px; background-color: var(--netflix-red); color: var(--netflix-white); width: 30px; height: auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--font-size-sm); z-index: 2; }
+
+
+/* 푸터 스타일 */
+.footer {
+    background-color: var(--netflix-black);
+    color: var(--netflix-text-secondary);
+    padding: var(--spacing-xl) 0;
+    margin-top: var(--spacing-xl);
+}
+
+.footer-social {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-social a {
+    color: var(--netflix-text-secondary);
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--netflix-white);
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.footer-column a {
+    color: var(--netflix-text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--netflix-white);
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.footer-info p {
+    color: var(--netflix-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* 공통 호버 효과 유틸 클래스 */
+.hover-scale:hover { transform: scale(1.05); }
+.hover-fade:hover { color: var(--netflix-text-secondary); background-color: rgba(255, 255, 255, 0.1); }
+.hover-fade-white:hover { color: var(--netflix-white); }
+
