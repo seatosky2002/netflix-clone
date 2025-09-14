@@ -19,25 +19,25 @@
             <!-- 메뉴 -->
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">홈</a>
+                    <a href="#" class="nav-link hover-fade">홈</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">시리즈</a>
+                    <a href="#" class="nav-link hover-fade">시리즈</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">영화</a>
+                    <a href="#" class="nav-link hover-fade">영화</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">게임</a>
+                    <a href="#" class="nav-link hover-fade">게임</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">NEW!요즘 대세 콘텐츠</a>
+                    <a href="#" class="nav-link hover-fade">NEW!요즘 대세 콘텐츠</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">내가 찜한 리스트</a>
+                    <a href="#" class="nav-link hover-fade">내가 찜한 리스트</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">언어별로 찾아보기</a>
+                    <a href="#" class="nav-link hover-fade">언어별로 찾아보기</a>
                 </li>
             </ul>
         </nav>
@@ -45,20 +45,20 @@
         <!-- 오른쪽 메뉴 -->
         <div class="nav-right">
             <!-- 검색 아이콘 -->
-            <button class="search-btn" aria-label="검색">
+            <button class="icon-btn hover-scale" aria-label="검색">
                 <i class="fas fa-search"></i>
             </button>
             
             <!-- 키즈 텍스트 -->
-            <span class="kids-text">키즈</span>
+            <span class="kids-text hover-fade">키즈</span>
             
             <!-- 알림 아이콘 -->
-            <button class="notification-btn" aria-label="알림">
+            <button class="icon-btn hover-scale" aria-label="알림">
                 <i class="fas fa-bell"></i>
             </button>
             
             <!-- 프로필 -->
-            <div class="profile-container">
+            <div class="profile-container hover-scale">
                 <svg class="profile-img" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
@@ -84,11 +84,11 @@
                         마침내 탄지로의 칼날이 모두 벼려졌다! 피에 굶주린 혈귀의 습격으로 가족을 잃고 여동생마저 저주에 걸린 소년. 가혹한 운명의 사슬을 끊어내고 세상에서 혈귀를 멸하려, 지금 탄지로가 복수의 칼날을 높이 든다.
                     </p>
                     <div class="hero-buttons">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary hover-scale">
                             <i class="fas fa-play"></i>
                             재생
                         </button>
-                        <button class="btn btn-secondary">
+                        <button class="btn btn-secondary hover-scale">
                             <i class="fas fa-info-circle"></i>
                             상세 정보
                         </button>
@@ -101,30 +101,38 @@
         <section class="content-section">
             <div class="container">
                 <h2 class="section-title">오늘 대한민국의 top 10 시리즈</h2>
-                <div class="content-list">
-                    <div class="content-item top10-item">
+                <div class="content-wrapper">
+                    <button class="slider-nav slider-prev" onclick="scrollContent(this, 'prev')">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-nav slider-next" onclick="scrollContent(this, 'next')">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="content-list">
+                    <a href="#" class="content-item top10-item hover-scale">
                         <span class="top10-rank">1</span>
                         <img src="images/대한민국top10_1.webp" alt="Top 10 시리즈 1위" class="content-image">
-                    </div>
-                    <div class="content-item top10-item">
+                    </a>
+                    <a href="#" class="content-item top10-item hover-scale">
                         <span class="top10-rank">2</span>
                         <img src="images/대한민국 top10_2.webp" alt="Top 10 시리즈 2위" class="content-image">
-                    </div>
-                    <div class="content-item top10-item">
+                    </a>
+                    <a href="#" class="content-item top10-item hover-scale">
                         <span class="top10-rank">3</span>
                         <img src="images/대한민국 top10_3.webp" alt="Top 10 시리즈 3위" class="content-image">
-                    </div>
-                    <div class="content-item top10-item">
+                    </a>
+                    <a href="#" class="content-item top10-item hover-scale">
                         <span class="top10-rank">4</span>
                         <img src="images/대한민국 top10_4.webp" alt="Top 10 시리즈 4위" class="content-image">
-                    </div>
-                    <div class="content-item top10-item">
+                    </a>
+                    <a href="#" class="content-item top10-item hover-scale">
                         <span class="top10-rank">5</span>
                         <img src="images/대한민국 top10_5.jpg" alt="Top 10 시리즈 5위" class="content-image">
-                    </div>
-                    <div class="content-item top10-item">
+                    </a>
+                    <a href="#" class="content-item top10-item hover-scale">
                         <span class="top10-rank">6</span>
                         <img src="images/대한민국 top10_6.webp" alt="Top 10 시리즈 6위" class="content-image">
+                    </a>
                     </div>
                 </div>
             </div>
@@ -134,24 +142,32 @@
         <section class="content-section">
             <div class="container">
                 <h2 class="section-title">회원님을 위해 엄선한 오늘의 콘텐츠</h2>
-                <div class="content-list">
-                    <div class="content-item">
+                <div class="content-wrapper">
+                    <button class="slider-nav slider-prev" onclick="scrollContent(this, 'prev')">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-nav slider-next" onclick="scrollContent(this, 'next')">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="content-list">
+                    <a href="#" class="content-item hover-scale">
                         <img src="images/top10.webp" alt="엄선 콘텐츠 1" class="content-image">
-                    </div>
-                    <div class="content-item">
+                    </a>
+                    <a href="#" class="content-item hover-scale">
                         <img src="images/top10 2.webp" alt="엄선 콘텐츠 2" class="content-image">
-                    </div>
-                    <div class="content-item">
+                    </a>
+                    <a href="#" class="content-item hover-scale">
                         <img src="images/top 10 3.webp" alt="엄선 콘텐츠 3" class="content-image">
-                    </div>
-                    <div class="content-item">
+                    </a>
+                    <a href="#" class="content-item hover-scale">
                         <img src="images/top 10 4.jpg" alt="엄선 콘텐츠 4" class="content-image">
-                    </div>
-                    <div class="content-item">
+                    </a>
+                    <a href="#" class="content-item hover-scale">
                         <img src="images/top 10 5.webp" alt="엄선 콘텐츠 5" class="content-image">
-                    </div>
-                    <div class="content-item">
+                    </a>
+                    <a href="#" class="content-item hover-scale">
                         <img src="images/top10 6.webp" alt="엄선 콘텐츠 6" class="content-image">
+                    </a>
                     </div>
                 </div>
             </div>
@@ -161,24 +177,32 @@
         <section class="content-section">
             <div class="container">
                 <h2 class="section-title">한국이 만든 콘텐츠</h2>
-                <div class="content-list">
-                    <div class="content-item">
+                <div class="content-wrapper">
+                    <button class="slider-nav slider-prev" onclick="scrollContent(this, 'prev')">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-nav slider-next" onclick="scrollContent(this, 'next')">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="content-list">
+                    <div class="content-item hover-scale">
                         <img src="images/korean1.webp" alt="한국 콘텐츠 1" class="content-image">
                     </div>
-                    <div class="content-item">
+                    <div class="content-item hover-scale">
                         <img src="images/korean2.jpg" alt="한국 콘텐츠 2" class="content-image">
                     </div>
-                    <div class="content-item">
+                    <div class="content-item hover-scale">
                         <img src="images/korean3.jpg" alt="한국 콘텐츠 3" class="content-image">
                     </div>
-                    <div class="content-item">
+                    <div class="content-item hover-scale">
                         <img src="images/korean4.jpg" alt="한국 콘텐츠 4" class="content-image">
                     </div>
-                    <div class="content-item">
+                    <div class="content-item hover-scale">
                         <img src="images/korean5.webp" alt="한국 콘텐츠 5" class="content-image">
                     </div>
-                    <div class="content-item">
+                    <div class="content-item hover-scale">
                         <img src="images/korean6.webp" alt="한국 콘텐츠 6" class="content-image">
+                    </div>
                     </div>
                 </div>
             </div>
@@ -190,41 +214,41 @@
         <div class="container">
             <!-- 소셜미디어 아이콘 -->
             <div class="footer-social">
-                <a href="#" aria-label="Facebook">
+                <a href="#" aria-label="Facebook" class="hover-fade-white">
                     <i class="fab fa-facebook"></i>
                 </a>
-                <a href="#" aria-label="Instagram">
+                <a href="#" aria-label="Instagram" class="hover-fade-white">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" aria-label="Twitter">
+                <a href="#" aria-label="Twitter" class="hover-fade-white">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" aria-label="YouTube">
+                <a href="#" aria-label="YouTube" class="hover-fade-white">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
             
-            <!-- 네비게이션 링크 4열 -->
+        
             <div class="footer-links">
                 <div class="footer-column">
-                    <a href="#">화면 해설</a>
-                    <a href="#">투자 정보(IR)</a>
-                    <a href="#">법적 고지</a>
+                    <a href="#" class="hover-fade-white">화면 해설</a>
+                    <a href="#" class="hover-fade-white">투자 정보(IR)</a>
+                    <a href="#" class="hover-fade-white">법적 고지</a>
                 </div>
                 <div class="footer-column">
-                    <a href="#">고객 센터</a>
-                    <a href="#">입사 정보</a>
-                    <a href="#">쿠키 설정</a>
+                    <a href="#" class="hover-fade-white">고객 센터</a>
+                    <a href="#" class="hover-fade-white">입사 정보</a>
+                    <a href="#" class="hover-fade-white">쿠키 설정</a>
                 </div>
                 <div class="footer-column">
-                    <a href="#">기프트카드</a>
-                    <a href="#">이용 약관</a>
-                    <a href="#">회사 정보</a>
+                    <a href="#" class="hover-fade-white">기프트카드</a>
+                    <a href="#" class="hover-fade-white">이용 약관</a>
+                    <a href="#" class="hover-fade-white">회사 정보</a>
                 </div>
                 <div class="footer-column">
-                    <a href="#">미디어 센터</a>
-                    <a href="#">개인정보</a>
-                    <a href="#">문의하기</a>
+                    <a href="#" class="hover-fade-white">미디어 센터</a>
+                    <a href="#" class="hover-fade-white">개인정보</a>
+                    <a href="#" class="hover-fade-white">문의하기</a>
                 </div>
             </div>
             
@@ -242,5 +266,19 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function scrollContent(button, direction) {
+            const section = button.closest('.content-section');
+            const contentList = section.querySelector('.content-list');
+            const scrollAmount = 300; // 스크롤할 픽셀 수
+            
+            if (direction === 'next') {
+                contentList.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            } else {
+                contentList.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>
