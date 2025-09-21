@@ -217,7 +217,12 @@
         <!-- Top 10 시리즈 섹션 -->
         <section class="content-section">
             <div class="container">
+                <div class="section-header">
                 <h2 class="section-title">오늘 대한민국의 top 10 시리즈</h2>
+                    <div class="pagination-indicator">
+                        <!-- JavaScript에서 동적으로 생성됨 -->
+                    </div>
+                </div>
                 <div class="content-wrapper">
                     <button class="slider-nav slider-prev">
                         <i class="fas fa-chevron-left"></i>
@@ -282,7 +287,12 @@
         <!-- 엄선 콘텐츠 섹션 -->
         <section class="content-section">
             <div class="container">
+                <div class="section-header">
                 <h2 class="section-title">회원님을 위해 엄선한 오늘의 콘텐츠</h2>
+                    <div class="pagination-indicator">
+                        <!-- JavaScript에서 동적으로 생성됨 -->
+                    </div>
+                </div>
                 <div class="content-wrapper">
                     <button class="slider-nav slider-prev">
                         <i class="fas fa-chevron-left"></i>
@@ -344,7 +354,12 @@
         <!-- 한국이 만든 콘텐츠 섹션 -->
         <section class="content-section">
             <div class="container">
+                <div class="section-header">
                 <h2 class="section-title">한국이 만든 콘텐츠</h2>
+                    <div class="pagination-indicator">
+                        <!-- JavaScript에서 동적으로 생성됨 -->
+                    </div>
+                </div>
                 <div class="content-wrapper">
                     <button class="slider-nav slider-prev">
                         <i class="fas fa-chevron-left"></i>
@@ -495,8 +510,16 @@
           // 앞뒤 복제
           const pre = document.createDocumentFragment();
           const post = document.createDocumentFragment();
-          originalItems.slice().reverse().forEach(n => pre.appendChild(n.cloneNode(true)));
-          originalItems.forEach(n => post.appendChild(n.cloneNode(true)));
+          originalItems.slice().reverse().forEach(n => {
+            const clone = n.cloneNode(true);
+            clone.setAttribute('data-clone', 'true');
+            pre.appendChild(clone);
+          });
+          originalItems.forEach(n => {
+            const clone = n.cloneNode(true);
+            clone.setAttribute('data-clone', 'true');
+            post.appendChild(clone);
+          });
           listEl.insertBefore(pre, listEl.firstChild);
           listEl.appendChild(post);
       
@@ -602,6 +625,39 @@
           }
         }
       
+         // 페이지네이션 업데이트 함수
+         function updatePagination(section, currentPage, totalPages) {
+           const paginationIndicator = section.querySelector('.pagination-indicator');
+           if (!paginationIndicator) return;
+           
+           const dots = paginationIndicator.querySelectorAll('.pagination-dot');
+           dots.forEach((dot, index) => {
+             dot.classList.toggle('active', index === currentPage);
+           });
+         }
+         
+         // 페이지네이션 계산 및 생성 함수
+         function calculateAndCreatePagination(section, list, itemsPerStep, itemsPerPage) {
+           // 원본 아이템 수만 계산 (복제 제외) - 무한 캐러셀의 실제 콘텐츠
+           const originalItems = list.querySelectorAll('.content-item:not([data-clone])').length;
+           
+           // 원본 아이템 기준으로 페이지 수 계산
+           const totalPages = Math.ceil(originalItems / itemsPerPage);
+           
+           // 페이지네이션 도트 동적 생성
+           const paginationIndicator = section.querySelector('.pagination-indicator');
+           if (paginationIndicator) {
+             paginationIndicator.innerHTML = '';
+             for (let i = 0; i < totalPages; i++) {
+               const dot = document.createElement('span');
+               dot.className = `pagination-dot ${i === 0 ? 'active' : ''}`;
+               paginationIndicator.appendChild(dot);
+             }
+           }
+           
+           return totalPages;
+         }
+         
          // 초기화
          document.addEventListener('DOMContentLoaded', () => {
            document.querySelectorAll('.content-section').forEach(section => {
@@ -610,12 +666,27 @@
              
              // Top 10 섹션은 4개씩, 다른 섹션은 5개씩 이동
              const itemsPerStep = section.querySelector('.top10-row') ? 4 : 5;
-       
+             const itemsPerPage = itemsPerStep; // 한 페이지에 표시되는 아이템 수
+             
              list.style.scrollBehavior = 'smooth';
              setupInfiniteCarousel(list, itemsPerStep)?.then(controller => {
                if (!controller) return;
-               section.querySelector('.slider-prev')?.addEventListener('click', () => controller.move('prev'));
-               section.querySelector('.slider-next')?.addEventListener('click', () => controller.move('next'));
+               
+               // 페이지네이션 초기화
+               const totalPages = calculateAndCreatePagination(section, list, itemsPerStep, itemsPerPage);
+               
+               // 슬라이더 버튼 이벤트 리스너
+               let currentPage = 0;
+               section.querySelector('.slider-prev')?.addEventListener('click', () => {
+                 currentPage = currentPage > 0 ? currentPage - 1 : totalPages - 1;
+                 updatePagination(section, currentPage, totalPages);
+                 controller.move('prev');
+               });
+               section.querySelector('.slider-next')?.addEventListener('click', () => {
+                 currentPage = currentPage < totalPages - 1 ? currentPage + 1 : 0;
+                 updatePagination(section, currentPage, totalPages);
+                 controller.move('next');
+               });
              });
            });
          });

@@ -511,7 +511,12 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
 
 /* 콘텐츠 섹션 공통 스타일 */
 .content-section { padding: var(--spacing-lg) 0; background-color: var(--netflix-black); position: relative; }
-.section-title { color: var(--netflix-white); font-size: 2rem; font-weight: 700; margin-bottom: var(--spacing-xl); }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl); }
+.section-title { color: var(--netflix-white); font-size: 2rem; font-weight: 700; margin: 0; }
+.pagination-indicator { display: flex; gap: 6px; align-items: center; }
+.pagination-dot { width: 24px; height: 4px; border-radius: 2px; background-color: rgba(255, 255, 255, 0.3); transition: all 0.3s ease; cursor: pointer; }
+.pagination-dot.active { background-color: var(--netflix-white); width: 32px; }
+.pagination-dot:hover { background-color: rgba(255, 255, 255, 0.6); }
 .content-wrapper { position: relative; }
 .content-list { display: flex; gap: var(--spacing-md); overflow-x: auto; scroll-behavior: smooth; padding: var(--spacing-sm) 0; }
 .content-list::-webkit-scrollbar { display: none; } /* 스크롤바 숨기기 */
