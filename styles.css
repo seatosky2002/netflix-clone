@@ -347,6 +347,7 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
     margin-bottom: 20px;
     cursor: pointer;
     transition: transform 0.2s ease;
+    flex: 0 0 calc(25% - 15px);
 }
 
 .top10-row:hover {
