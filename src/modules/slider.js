@@ -1,6 +1,7 @@
 // 슬라이더 기능 모듈
 export function initSliders() {
-    const sliders = document.querySelectorAll('.content-list');
+    // 무한 캐러셀은 main.js에서 처리하므로 제외
+    const sliders = document.querySelectorAll('.content-list:not(.infinite-carousel)');
     
     sliders.forEach(slider => {
         const prevBtn = slider.parentElement.querySelector('.slider-prev');

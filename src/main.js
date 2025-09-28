@@ -1,6 +1,4 @@
-// CSS 파일 import
-import './style.css'
-import './styles.css'
+// CSS 파일 import (index.html에서 직접 로드하므로 생략 가능)
 
 // 모듈 import
 import { initSliders } from './modules/slider.js';
@@ -192,10 +190,12 @@ function scrollContent(button, direction) {
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('Netflix Clone 앱이 시작됩니다.');
     
-    // 콘텐츠 데이터 로드 및 렌더링
-    const contentData = await fetchContentData();
-    if (contentData) {
-        renderContentSections(contentData);
+    // 콘텐츠 데이터 컨테이너가 있을 때만 동적 렌더링 수행
+    if (document.getElementById('dynamic-content-sections')) {
+        const contentData = await fetchContentData();
+        if (contentData) {
+            renderContentSections(contentData);
+        }
     }
     
     // 각 모듈 초기화
