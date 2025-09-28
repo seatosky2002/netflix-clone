@@ -41,7 +41,12 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--spacing-lg);
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* 헤더 스크롤 효과 */
+.header.scrolled {
+    background-color: rgba(20, 20, 20, 0.95);
 }
 
 /* 네비게이션 영역 */
@@ -645,4 +650,59 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
 .hover-scale:hover { transform: scale(1.05); }
 .hover-fade:hover { color: var(--netflix-text-secondary); background-color: rgba(255, 255, 255, 0.1); }
 .hover-fade-white:hover { color: var(--netflix-white); }
+
+/* JavaScript 기능을 위한 추가 스타일 */
+
+/* 모달 애니메이션 */
+.header-modal {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+}
+
+.header-modal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 네비게이션 링크 활성 상태 */
+.nav-link.active {
+    color: var(--netflix-white);
+    font-weight: 600;
+}
+
+/* 슬라이더 버튼 비활성 상태 */
+.slider-nav[style*="opacity: 0.5"] {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* 반응형 슬라이더 */
+@media (max-width: 768px) {
+    .content-list {
+        gap: 8px;
+    }
+    
+    .content-item {
+        min-width: calc(50% - 4px);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .content-item {
+        min-width: calc(33.333% - 8px);
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .content-item {
+        min-width: calc(25% - 12px);
+    }
+}
+
+@media (min-width: 1441px) {
+    .content-item {
+        min-width: calc(20% - 16px);
+    }
+}
 
