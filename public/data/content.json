@@ -1,0 +1,235 @@
+{
+  "sections": [
+    {
+      "id": "top10-series",
+      "title": "오늘 대한민국의 top 10 시리즈",
+      "type": "top10",
+      "items": [
+        {
+          "id": 1,
+          "title": "오징어 게임",
+          "image": "images/대한민국top10_1.webp",
+          "rank": 1
+        },
+        {
+          "id": 2,
+          "title": "더 글로리",
+          "image": "images/대한민국 top10_2.webp",
+          "rank": 2
+        },
+        {
+          "id": 3,
+          "title": "이상한 변호사 우영우",
+          "image": "images/대한민국 top10_3.webp",
+          "rank": 3
+        },
+        {
+          "id": 4,
+          "title": "재벌집 막내아들",
+          "image": "images/대한민국 top10_4.webp",
+          "rank": 4
+        },
+        {
+          "id": 5,
+          "title": "소년심판",
+          "image": "images/대한민국 top10_5.jpg",
+          "rank": 5
+        },
+        {
+          "id": 6,
+          "title": "환혼",
+          "image": "images/대한민국 top10_6.webp",
+          "rank": 6
+        },
+        {
+          "id": 7,
+          "title": "마이 네임",
+          "image": "images/대한민국 top10_7.webp",
+          "rank": 7
+        },
+        {
+          "id": 8,
+          "title": "D.P.",
+          "image": "images/대한민국 top10_8.webp",
+          "rank": 8
+        },
+        {
+          "id": 9,
+          "title": "기타 콘텐츠",
+          "image": "images/대한민국 top10_9.webp",
+          "rank": 9
+        },
+        {
+          "id": 10,
+          "title": "콘텐츠 10위",
+          "image": "images/top10_7.jpg",
+          "rank": 10
+        }
+      ]
+    },
+    {
+      "id": "curated-content",
+      "title": "회원님을 위해 엄선한 오늘의 콘텐츠",
+      "type": "regular",
+      "items": [
+        {
+          "id": 11,
+          "title": "기묘한 이야기",
+          "image": "images/top10_1.webp"
+        },
+        {
+          "id": 12,
+          "title": "킹덤",
+          "image": "images/top10_2.webp"
+        },
+        {
+          "id": 13,
+          "title": "스위트홈",
+          "image": "images/top10_3.webp"
+        },
+        {
+          "id": 14,
+          "title": "사이코지만 괜찮아",
+          "image": "images/top10_4.jpg"
+        },
+        {
+          "id": 15,
+          "title": "이태원 클라쓰",
+          "image": "images/top10_5.webp"
+        },
+        {
+          "id": 16,
+          "title": "스타트업",
+          "image": "images/top10_6.webp"
+        },
+        {
+          "id": 17,
+          "title": "런 온",
+          "image": "images/top10_7.webp"
+        },
+        {
+          "id": 18,
+          "title": "사이코지만 괜찮아 2",
+          "image": "images/top10_8.jpg"
+        },
+        {
+          "id": 19,
+          "title": "이태원 클라쓰 2",
+          "image": "images/top10_9.jpg"
+        },
+        {
+          "id": 20,
+          "title": "스타트업 2",
+          "image": "images/top10_10.jpg"
+        },
+        {
+          "id": 21,
+          "title": "런 온 2",
+          "image": "images/top10_11.jpg"
+        },
+        {
+          "id": 22,
+          "title": "기묘한 이야기 2",
+          "image": "images/top10_12.jpg"
+        },
+        {
+          "id": 23,
+          "title": "킹덤 2",
+          "image": "images/top10_13.jpg"
+        },
+        {
+          "id": 24,
+          "title": "스위트홈 2",
+          "image": "images/top10_14.jpg"
+        },
+        {
+          "id": 25,
+          "title": "사이코지만 괜찮아 3",
+          "image": "images/top10_15.jpg"
+        }
+      ]
+    },
+    {
+      "id": "korean-content",
+      "title": "한국이 만든 콘텐츠",
+      "type": "regular",
+      "items": [
+        {
+          "id": 26,
+          "title": "오징어 게임",
+          "image": "images/korean1.webp"
+        },
+        {
+          "id": 27,
+          "title": "더 글로리",
+          "image": "images/korean2.jpg"
+        },
+        {
+          "id": 28,
+          "title": "이상한 변호사 우영우",
+          "image": "images/korean3.jpg"
+        },
+        {
+          "id": 29,
+          "title": "재벌집 막내아들",
+          "image": "images/korean4.jpg"
+        },
+        {
+          "id": 30,
+          "title": "소년심판",
+          "image": "images/korean5.webp"
+        },
+        {
+          "id": 31,
+          "title": "환혼",
+          "image": "images/korean6.webp"
+        },
+        {
+          "id": 32,
+          "title": "마이 네임",
+          "image": "images/korean7.webp"
+        },
+        {
+          "id": 33,
+          "title": "D.P.",
+          "image": "images/korean8.jpg"
+        },
+        {
+          "id": 34,
+          "title": "기묘한 이야기",
+          "image": "images/korean9.jpg"
+        },
+        {
+          "id": 35,
+          "title": "킹덤",
+          "image": "images/korean10.jpg"
+        },
+        {
+          "id": 36,
+          "title": "스위트홈",
+          "image": "images/korean11.jpg"
+        },
+        {
+          "id": 37,
+          "title": "사이코지만 괜찮아",
+          "image": "images/korean12.jpg"
+        },
+        {
+          "id": 38,
+          "title": "이태원 클라쓰",
+          "image": "images/korean13.jpg"
+        },
+        {
+          "id": 39,
+          "title": "스타트업",
+          "image": "images/korean14.jpg"
+        },
+        {
+          "id": 40,
+          "title": "런 온",
+          "image": "images/korean15.jpg"
+        }
+      ]
+    }
+  ]
+}
