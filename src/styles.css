@@ -187,6 +187,7 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
     position: relative;
 }
 
+/* header-modal: base + animation 통합 정의 */
 .header-modal {
     position: absolute;
     top: 100%;
@@ -200,7 +201,7 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     z-index: 1001;
     margin-top: 8px;
 }
@@ -523,9 +524,9 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
 .pagination-dot.active { background-color: var(--netflix-white); width: 32px; }
 .pagination-dot:hover { background-color: rgba(255, 255, 255, 0.6); }
 .content-wrapper { position: relative; }
-.content-list { display: flex; gap: var(--spacing-md); overflow-x: auto; scroll-behavior: smooth; padding: var(--spacing-sm) 0; }
+.content-list { display: flex; gap: var(--spacing-md); overflow-x: hidden; overflow-y: hidden; scroll-behavior: smooth; padding: var(--spacing-sm) 0; }
 .content-list::-webkit-scrollbar { display: none; } /* 스크롤바 숨기기 */
-.content-item { flex: 0 0 250px; cursor: pointer; transition: transform 0.3s ease; aspect-ratio: 16/9; margin-right: 16px; }
+.content-item { flex: 0 0 250px; cursor: pointer; transition: transform 0.3s ease; aspect-ratio: 16/9; }
 .content-item:hover { transform: scale(1.05); }
 .content-image { width: 100%; height: auto; object-fit: contain; border-radius: 4px; }
 
@@ -536,25 +537,10 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
 .slider-next { right: -50px; }
 
 /* Top 10 전용 스타일 */
-.top10-item { position: relative; }
-.top10-rank { position: absolute; top: 10px; left: 10px; background-color: var(--netflix-red); color: var(--netflix-white); width: 30px; height: auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--font-size-sm); z-index: 2; }
+/* .top10-item, .top10-rank: 현재 구조에서 사용되지 않음 (SVG는 .top-10-rank 사용) */
 
 /* Top 10 순위 배지 스타일 */
-.top10-rank-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 4px;
-    padding: 4px;
-}
-
-.rank-svg {
-    fill: none;
-    stroke: #ffffff;
-    stroke-width: 3;
-}
+/* .top10-rank-badge, .rank-svg: 미사용 */
 
 /* Top 10 행 스타일 - 순위와 이미지를 나란히 배치 */
 .top10-row {
@@ -654,12 +640,6 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
 /* JavaScript 기능을 위한 추가 스타일 */
 
 /* 모달 애니메이션 */
-.header-modal {
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.2s ease;
-}
-
 .header-modal.show {
     opacity: 1;
     transform: translateY(0);
