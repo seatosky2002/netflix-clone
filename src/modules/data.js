@@ -1,12 +1,18 @@
 // 데이터 fetch 모듈
+const API_BASE_URL = 'http://localhost:3000';
+
 export async function fetchContentData() {
     try {
-        const response = await fetch('/data/content.json');
+        const response = await fetch(`${API_BASE_URL}/api/content`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
-        return data;
+        const result = await response.json();
+        if (result.success) {
+            return result.data;
+        } else {
+            throw new Error('API 응답이 올바르지 않습니다.');
+        }
     } catch (error) {
         console.error('콘텐츠 데이터를 가져오는데 실패했습니다:', error);
         return null;

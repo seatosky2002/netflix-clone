@@ -186,39 +186,23 @@ function scrollContent(button, direction) {
    return totalPages;
  }
 
-// DOM이 로드된 후 초기화
-document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Netflix Clone 앱이 시작됩니다.');
-    
-    // 콘텐츠 데이터 컨테이너가 있을 때만 동적 렌더링 수행
-    if (document.getElementById('dynamic-content-sections')) {
-        const contentData = await fetchContentData();
-        if (contentData) {
-            renderContentSections(contentData);
-        }
-    }
-    
-    // 각 모듈 초기화
-    initSliders();
-    initModals();
-    initNavigation();
-
-    // 기존 캐러셀 초기화
+// 캐러셀 초기화 함수
+function initializeCarousels() {
     document.querySelectorAll('.content-section').forEach(section => {
         const list = section.querySelector('.content-list.infinite-carousel');
         if (!list) return;
-        
+
         // Top 10 섹션은 4개씩, 다른 섹션은 5개씩 이동
         const itemsPerStep = section.querySelector('.top10-row') ? 4 : 5;
         const itemsPerPage = itemsPerStep; // 한 페이지에 표시되는 아이템 수
-        
+
         list.style.scrollBehavior = 'smooth';
         setupInfiniteCarousel(list, itemsPerStep)?.then(controller => {
           if (!controller) return;
-          
+
           // 페이지네이션 초기화
           const totalPages = calculateAndCreatePagination(section, list, itemsPerStep, itemsPerPage);
-          
+
           // 슬라이더 버튼 이벤트 리스너
           let currentPage = 0;
           section.querySelector('.slider-prev')?.addEventListener('click', () => {
@@ -232,5 +216,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             controller.move('next');
           });
         });
-      });
+    });
+}
+
+// DOM이 로드된 후 초기화
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('Netflix Clone 앱이 시작됩니다.');
+
+    // 각 모듈 초기화
+    initSliders();
+    initModals();
+    initNavigation();
+
+    // 콘텐츠 데이터 컨테이너가 있을 때만 동적 렌더링 수행
+    if (document.getElementById('dynamic-content-sections')) {
+        console.log('서버에서 콘텐츠 데이터를 가져오는 중...');
+        const contentData = await fetchContentData();
+        if (contentData) {
+            console.log('콘텐츠 렌더링 중...');
+            renderContentSections(contentData);
+            // 동적 콘텐츠 렌더링 후 캐러셀 초기화
+            console.log('캐러셀 초기화 중...');
+            initializeCarousels();
+        } else {
+            console.error('서버에서 콘텐츠를 가져올 수 없습니다. 서버가 실행 중인지 확인하세요.');
+        }
+    }
 });

@@ -31,6 +31,14 @@ app.get("/", (req, res) => {
   res.send("✅ Express 서버가 정상적으로 실행 중입니다!");
 });
 
+// 콘텐츠 데이터 API
+app.get('/api/content', (req, res) => {
+  res.json({
+    success: true,
+    data: contentData
+  });
+});
+
 // 검색 API - 1초 지연 적용
 app.get('/api/search', delayResponse, (req, res) => {
   const query = req.query.q || '';
