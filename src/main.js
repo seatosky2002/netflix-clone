@@ -5,6 +5,7 @@ import { initSliders } from './modules/slider.js';
 import { initModals } from './modules/modal.js';
 import { initNavigation } from './modules/navigation.js';
 import { fetchContentData, renderContentSections } from './modules/data.js';
+import { initSearch } from './modules/search.js';
 
 // 이미지 로딩 대기
 function waitForImages(el) {
@@ -227,6 +228,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initSliders();
     initModals();
     initNavigation();
+    initSearch();
 
     // 콘텐츠 데이터 컨테이너가 있을 때만 동적 렌더링 수행
     if (document.getElementById('dynamic-content-sections')) {
