@@ -154,7 +154,7 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .search-container.active {
@@ -204,6 +204,64 @@ body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(-
 
 .search-close i {
     font-size: 14px;
+}
+
+/* 최근 검색어 레이어 */
+.recent-searches {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 8px 0;
+    z-index: 1002;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.recent-searches-header {
+    padding: 8px 16px;
+    color: var(--netflix-text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recent-searches-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.recent-search-item {
+    padding: 10px 16px;
+    color: var(--netflix-white);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.recent-search-item:hover,
+.recent-search-item.selected {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.recent-search-item i {
+    color: var(--netflix-text-secondary);
+    font-size: 12px;
+}
+
+.recent-searches-empty {
+    padding: 16px;
+    color: var(--netflix-text-secondary);
+    font-size: 13px;
+    text-align: center;
 }
 
 /* 키즈 텍스트 스타일 */

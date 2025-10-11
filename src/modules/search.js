@@ -1,11 +1,145 @@
 // 검색 모듈
 const SEARCH_API_URL = 'http://localhost:3000/api/search';
+const RECENT_SEARCHES_KEY = 'netflix_recent_searches';
+const MAX_RECENT_SEARCHES = 5;
 
 // 검색 상태
 let searchTimeout = null;
 let isSearchOpen = false;
+let selectedIndex = -1;
+let recentSearches = [];
+
+// localStorage에서 최근 검색어 불러오기
+function loadRecentSearches() {
+    try {
+        const saved = localStorage.getItem(RECENT_SEARCHES_KEY);
+        recentSearches = saved ? JSON.parse(saved) : [];
+    } catch (error) {
+        console.error('최근 검색어 불러오기 실패:', error);
+        recentSearches = [];
+    }
+}
+
+// localStorage에 최근 검색어 저장
+function saveRecentSearches() {
+    try {
+        localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(recentSearches));
+    } catch (error) {
+        console.error('최근 검색어 저장 실패:', error);
+    }
+}
+
+// 최근 검색어 추가 (중복 제거, 최신순, 최대 5개)
+function addRecentSearch(query) {
+    if (!query || query.trim().length === 0) return;
+
+    // 중복 제거
+    recentSearches = recentSearches.filter(item => item !== query);
+
+    // 맨 앞에 추가
+    recentSearches.unshift(query);
+
+    // 최대 5개까지만 유지
+    if (recentSearches.length > MAX_RECENT_SEARCHES) {
+        recentSearches = recentSearches.slice(0, MAX_RECENT_SEARCHES);
+    }
+
+    saveRecentSearches();
+}
+
+// 최근 검색어 렌더링
+function renderRecentSearches() {
+    const recentSearchesContainer = document.querySelector('.recent-searches');
+    const recentSearchesList = document.querySelector('.recent-searches-list');
+
+    if (!recentSearchesList) return;
+
+    if (recentSearches.length === 0) {
+        recentSearchesList.innerHTML = '<div class="recent-searches-empty">최근 검색어가 없습니다</div>';
+        return;
+    }
+
+    recentSearchesList.innerHTML = recentSearches.map((query, index) => `
+        <li class="recent-search-item" data-index="${index}" data-query="${query}">
+            <i class="fas fa-history"></i>
+            <span>${query}</span>
+        </li>
+    `).join('');
+
+    // 마우스 클릭 이벤트
+    const items = recentSearchesList.querySelectorAll('.recent-search-item');
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            const query = item.getAttribute('data-query');
+            selectRecentSearch(query);
+        });
+    });
+}
+
+// 최근 검색어 선택
+function selectRecentSearch(query) {
+    const searchInput = document.querySelector('.search-input');
+    searchInput.value = query;
+    hideRecentSearches();
+    performSearch(query);
+}
+
+// 최근 검색어 레이어 표시
+function showRecentSearches() {
+    const recentSearchesContainer = document.querySelector('.recent-searches');
+    if (recentSearches.length > 0) {
+        recentSearchesContainer.style.display = 'block';
+    }
+}
+
+// 최근 검색어 레이어 숨김
+function hideRecentSearches() {
+    const recentSearchesContainer = document.querySelector('.recent-searches');
+    recentSearchesContainer.style.display = 'none';
+    selectedIndex = -1;
+    updateSelectedItem();
+}
+
+// 키보드 네비게이션 - 선택된 아이템 업데이트
+function updateSelectedItem() {
+    const items = document.querySelectorAll('.recent-search-item');
+    items.forEach((item, index) => {
+        if (index === selectedIndex) {
+            item.classList.add('selected');
+        } else {
+            item.classList.remove('selected');
+        }
+    });
+}
+
+// 키보드 네비게이션 - 위 방향키
+function navigateUp() {
+    if (selectedIndex > 0) {
+        selectedIndex--;
+        updateSelectedItem();
+    }
+}
+
+// 키보드 네비게이션 - 아래 방향키
+function navigateDown() {
+    if (selectedIndex < recentSearches.length - 1) {
+        selectedIndex++;
+        updateSelectedItem();
+    }
+}
+
+// 키보드 네비게이션 - Enter 키
+function selectCurrentItem() {
+    if (selectedIndex >= 0 && selectedIndex < recentSearches.length) {
+        const query = recentSearches[selectedIndex];
+        selectRecentSearch(query);
+    }
+}
 
 export function initSearch() {
+    // 최근 검색어 불러오기
+    loadRecentSearches();
+
     const searchIcon = document.querySelector('.search-icon');
     const searchContainer = document.querySelector('.search-container');
     const searchInput = document.querySelector('.search-input');
@@ -29,9 +163,31 @@ export function initSearch() {
         clearSearchResults();
     });
 
+    // 검색 입력창 포커스 - 최근 검색어 표시
+    searchInput.addEventListener('focus', () => {
+        renderRecentSearches();
+        if (searchInput.value.trim().length === 0) {
+            showRecentSearches();
+        }
+    });
+
+    // 검색 입력창 블러 - 최근 검색어 숨김 (약간의 지연)
+    searchInput.addEventListener('blur', () => {
+        setTimeout(() => {
+            hideRecentSearches();
+        }, 200);
+    });
+
     // 검색 입력 이벤트
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.trim();
+
+        // 입력값이 있으면 최근 검색어 숨김
+        if (query.length > 0) {
+            hideRecentSearches();
+        } else {
+            showRecentSearches();
+        }
 
         // 디바운싱: 입력이 멈춘 후 500ms 후에 검색
         clearTimeout(searchTimeout);
@@ -43,7 +199,37 @@ export function initSearch() {
 
         searchTimeout = setTimeout(() => {
             performSearch(query);
+            addRecentSearch(query);
+            renderRecentSearches();
         }, 500);
+    });
+
+    // 키보드 네비게이션
+    searchInput.addEventListener('keydown', (e) => {
+        const recentSearchesContainer = document.querySelector('.recent-searches');
+        const isRecentSearchesVisible = recentSearchesContainer.style.display === 'block';
+
+        if (isRecentSearchesVisible) {
+            switch(e.key) {
+                case 'ArrowDown':
+                    e.preventDefault();
+                    navigateDown();
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    navigateUp();
+                    break;
+                case 'Enter':
+                    if (selectedIndex >= 0) {
+                        e.preventDefault();
+                        selectCurrentItem();
+                    }
+                    break;
+                case 'Escape':
+                    hideRecentSearches();
+                    break;
+            }
+        }
     });
 
     // ESC 키로 검색창 닫기
@@ -62,6 +248,7 @@ export function initSearch() {
         } else {
             searchContainer.classList.remove('active');
             searchInput.value = '';
+            hideRecentSearches();
         }
     }
 
